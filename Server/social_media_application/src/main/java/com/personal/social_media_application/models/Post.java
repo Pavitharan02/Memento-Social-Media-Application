@@ -30,4 +30,21 @@ public class Post {
     private LocalDateTime createdAt;
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    public Post() {
+    }
+
+    public Post(User user, String description, String picturePath, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.user = user;
+        this.description = description;
+        this.picturePath = picturePath;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Post(User user, String description, String picturePath) {
+        this.user = user;
+        this.description = description;
+        this.picturePath = picturePath;
+    }
 }

@@ -1,10 +1,22 @@
 import React from "react";
 import { useState } from "react";
 import './Login.css';
+import { Navigate } from "react-router-dom";
 
 const Login = () => {
-    // const [loggedIn, setLoggedIn] = useState(false);
-  
+    const [loggedIn,setLoggedIn] = useState(false);
+    
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      // Perform login logic here using the email and password values
+      // For simplicity, this example assumes login is successful
+      setLoggedIn(true);
+    };
+
+    if(loggedIn){
+      return <Navigate to="/home"/>
+    }
+
     const buttonStyle = {
         paddingLeft: '2.5rem',
         paddingRight: '2.5rem',
@@ -16,39 +28,22 @@ const Login = () => {
             <div className="container-fluid h-custom">
               <div className="row d-flex justify-content-center align-items-center h-100">
                 <div className="col-md-9 col-lg-6 col-xl-5">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" className="img-fluid" alt="Sample image"></img>
+                  <img src="https://i.ibb.co/n8ZP2h8/LOGO.png" className="img-fluid" alt="This is logo"/>
                 </div>
-                <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                  <form>
+                <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style={{marginTop: "80px"}}>
+                  <form onSubmit={handleSubmit}>
                     <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                      <p className="lead fw-normal mb-0 me-3">Sign in with</p>
-                      <button type="button" className="btn btn-primary btn-floating mx-1">
-                        <i className="fab fa-facebook-f"></i>
-                      </button>
-          
-                      <button type="button" className="btn btn-primary btn-floating mx-1">
-                        <i className="fab fa-twitter"></i>
-                      </button>
-          
-                      <button type="button" className="btn btn-primary btn-floating mx-1">
-                        <i className="fab fa-linkedin-in"></i>
-                      </button>
                     </div>
-          
-                    <div className="divider d-flex align-items-center my-4">
-                      <p className="text-center fw-bold mx-3 mb-0">Or</p>
-                    </div>
-          
                     <div className="form-outline mb-4">
+                      <label className="form-label" for="form3Example3">Email address</label>
                       <input type="email" id="form3Example3" class="form-control form-control-lg"
                         placeholder="Enter a valid email address" />
-                      <label className="form-label" for="form3Example3">Email address</label>
                     </div>
           
                     <div className="form-outline mb-3">
+                      <label className="form-label" for="form3Example4">Password</label>
                       <input type="password" id="form3Example4" className="form-control form-control-lg"
                         placeholder="Enter password" />
-                      <label className="form-label" for="form3Example4">Password</label>
                     </div>
           
                     <div className="d-flex justify-content-between align-items-center">
@@ -62,7 +57,7 @@ const Login = () => {
                     </div>
           
                     <div className="text-center text-lg-start mt-4 pt-2">
-                    <button type="button" className="btn btn-primary btn-lg" style={buttonStyle}>Login</button>
+                    <button type="submit" className="btn btn-success btn-lg" style={buttonStyle}>Login</button>
                       <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
                           className="link-danger">Register</a></p>
                     </div>
@@ -72,7 +67,7 @@ const Login = () => {
               </div>
             </div>
             <div
-              className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+              className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-dark">
               <div class="text-white mb-3 mb-md-0">
                 Copyright © 2020. All rights reserved.
               </div>

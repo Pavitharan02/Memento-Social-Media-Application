@@ -52,7 +52,7 @@ const Home = () => {
     return (
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-2 title"><h2>Memento</h2></div>
+            <div className="col-md-2 title"><img src="https://i.ibb.co/d5ZRfCh/MEMENTO-LOGO.png" className="img-fluid" alt="This is logo" style={{marginBottom: "10px"}}/></div>
             <div className="col-md-9" style={{paddingTop: "15px"}}><input placeholder="Search..."></input></div>
             <div className="col-md-1">
                 <div className="d-flex justify-content-end">
@@ -77,7 +77,7 @@ const Home = () => {
               </div>
             </div>
             <div className="col-md-6">
-              <NewPost></NewPost>
+              <NewPost uid={uid}/>
               <Posts user={user} posts={posts}/>
               </div>
                 
