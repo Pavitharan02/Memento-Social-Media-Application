@@ -1,18 +1,17 @@
 package com.personal.social_media_application.models;
-
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
-@Table(name = "user")
 @Getter
 @Setter
+@Entity
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +19,7 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     private String picturePath;
     private String location;
     private String occupation;
@@ -33,10 +33,11 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String picturePath, String location, String occupation, long viewedProfile, long impressions, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public User(String firstName, String lastName, String email, String password, String picturePath, String location, String occupation, long viewedProfile, long impressions, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
         this.picturePath = picturePath;
         this.location = location;
         this.occupation = occupation;
@@ -45,4 +46,5 @@ public class User {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
+
 }

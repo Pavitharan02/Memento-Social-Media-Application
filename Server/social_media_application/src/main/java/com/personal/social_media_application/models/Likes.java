@@ -1,13 +1,12 @@
 package com.personal.social_media_application.models;
-
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import jakarta.persistence.*;
 
-@Entity
-@Table(name = "likes")
 @Getter
 @Setter
+@Entity
+@Table(name = "likes")
 public class Likes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +27,5 @@ public class Likes {
         this.post = post;
         this.user = user;
     }
+
 }

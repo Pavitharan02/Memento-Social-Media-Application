@@ -9,6 +9,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface FriendsRepository extends JpaRepository<Friends, Long>{
-    @Query("SELECT f.friends FROM Friends f WHERE f.user.uid = :uid")
-    List<User> findFriendsByUID(@Param("uid") Long uid);
+    @Query("SELECT f FROM Friends f WHERE f.user.uid = :uid")
+    List<Friends> findFriendsByUID(@Param("uid") Long uid);
 }

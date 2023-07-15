@@ -1,18 +1,17 @@
 package com.personal.social_media_application.models;
-
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
-@Table(name = "post")
 @Getter
 @Setter
+@Entity
+@Table(name = "post")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,4 +46,5 @@ public class Post {
         this.description = description;
         this.picturePath = picturePath;
     }
+
 }

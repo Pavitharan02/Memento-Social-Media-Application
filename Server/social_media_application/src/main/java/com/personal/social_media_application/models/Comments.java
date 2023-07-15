@@ -1,13 +1,12 @@
 package com.personal.social_media_application.models;
-
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import jakarta.persistence.*;
 
-@Entity
-@Table(name = "comments")
 @Getter
 @Setter
+@Entity
+@Table(name = "comments")
 public class Comments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,4 +30,5 @@ public class Comments {
         this.post = post;
         this.user = user;
     }
+
 }

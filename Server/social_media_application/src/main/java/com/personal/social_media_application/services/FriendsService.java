@@ -1,6 +1,7 @@
 package com.personal.social_media_application.services;
 
 import com.personal.social_media_application.Repositories.FriendsRepository;
+import com.personal.social_media_application.models.Friends;
 import com.personal.social_media_application.models.User;
 import org.springframework.stereotype.Service;
 
@@ -15,8 +16,12 @@ public class FriendsService {
         this.friendsRepository = friendsRepository;
     }
 
-    public List<User> getFriendsByUID(Long uid) {
-        List<User> friends = friendsRepository.findFriendsByUID(uid);
+    public List<Friends> getFriendsByUID(Long uid) {
+        List<Friends> friends = friendsRepository.findFriendsByUID(uid);
         return friends;
+    }
+
+    public Friends addFriend(Friends friend) {
+        return friendsRepository.save(friend);
     }
 }

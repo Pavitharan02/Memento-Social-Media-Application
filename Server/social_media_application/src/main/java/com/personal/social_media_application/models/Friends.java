@@ -1,13 +1,12 @@
 package com.personal.social_media_application.models;
-
-import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import jakarta.persistence.*;
 
-@Entity
-@Table(name = "friends")
 @Getter
 @Setter
+@Entity
+@Table(name = "friends")
 public class Friends {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,4 +27,5 @@ public class Friends {
         this.user = user;
         this.friends = friends;
     }
+
 }

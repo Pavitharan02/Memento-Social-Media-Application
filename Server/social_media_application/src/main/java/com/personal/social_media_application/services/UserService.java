@@ -4,6 +4,8 @@ import com.personal.social_media_application.Repositories.UserRepository;
 import com.personal.social_media_application.models.User;
 import org.springframework.stereotype.Service;
 
+
+
 @Service
 public class UserService {
     private final UserRepository userRepository;

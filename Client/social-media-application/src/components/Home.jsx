@@ -1,5 +1,4 @@
-import React from "react";
-import { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import './Home.css'
 import NewPost from "./NewPost";
 import Posts from "./Posts";
@@ -9,7 +8,7 @@ const Home = () => {
     // const [loggedIn, setLoggedIn] = useState(false);
 
     const [user, setUser] = useState("");
-    const [friends, setFriends] = useState("");
+    const [friends, setFriends] = useState([]);
     const [posts, setPosts] = useState("");
     const uid = 1;
 
@@ -67,13 +66,11 @@ const Home = () => {
               <Profile user={user}/>
               <div className="container subcont">
                 <b>Friends List</b>
-                <ul>
-                {Array.isArray(friends) ? (
-                friends.map((item) => <li key={item.uid}>{item.firstName+" "+item.lastName}</li>)
-                ) : (
-                <li>No friends data available</li>
-                )}
-                </ul>
+                {friends.map((friend) => (
+                  <div key={friend.fid}>
+                    <p>{friend.friends.firstName+" "+friend.friends.lastName}</p>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="col-md-6">
