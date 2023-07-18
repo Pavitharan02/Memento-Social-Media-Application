@@ -63,12 +63,12 @@ const Home = () => {
           <div className="row" style={{backgroundColor: "lightgrey",paddingBottom: "10px"}}>
             <div className="col-md-1"></div>
             <div className="col-md-4">
-              <Profile user={user}/>
-              <div className="container subcont">
-                <b>Friends List</b>
+              <div><Profile user={user}/></div>
+              <div className="container homesubcont">
+                <b style={{fontSize: "17px"}}>Friends List</b>
                 {friends.map((friend) => (
                   <div key={friend.fid}>
-                    <p>{friend.friends.firstName+" "+friend.friends.lastName}</p>
+                    <div>{friend.friends.firstName+" "+friend.friends.lastName}</div>
                   </div>
                 ))}
               </div>

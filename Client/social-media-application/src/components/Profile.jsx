@@ -28,16 +28,16 @@ const Profile = ({user}) => {
                 <hr></hr>
                 <div style={{paddingLeft: "5px"}}><b>Social Profiles</b></div>
                 <div className="row">
-                  <div className="col-md-1">i</div>
+                  <div className="col-md-1"><img src="https://png.pngtree.com/png-vector/20221018/ourmid/pngtree-twitter-social-media-round-icon-png-image_6315985.png" className="icosty" alt="twitter"></img></div>
                   <div className="col-md-9">
-                  <div className="row boxtext">Twitter<br></br>Social Network</div>
+                  <div className="row boxtext">Twitter</div><div className="row boxtext">Social Network</div>
                   </div>
                   <div className="col-2"><i className="fa fa-pen" aria-hidden="true"></i></div>
                 </div>
                 <div className="row">
-                  <div className="col-md-1">i</div>
+                  <div className="col-md-1"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png" className="icosty" alt="linkedin"></img></div>
                   <div className="col-md-9">
-                  <div className="row boxtext">LinkedIn<br></br>Network Platform</div>
+                  <div className="row boxtext">LinkedIn</div><div className="row boxtext">Social Network</div>
                   </div>
                   <div className="col-2"><i className="fa fa-pen" aria-hidden="true"></i></div>
                 </div>

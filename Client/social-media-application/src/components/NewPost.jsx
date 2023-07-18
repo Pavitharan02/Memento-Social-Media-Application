@@ -7,8 +7,9 @@ const NewPost = ({uid}) => {
     const [showImageUpload, setShowImageUpload] = useState(false);
     const [desc,setDesc] = useState("");
 
-    const handlebuttonclick = () => {
-      setShowImageUpload(true);
+    const handlebuttonclick = (e) => {
+      e.preventDefault();
+      setShowImageUpload(!showImageUpload);
     }
 
     const handleChange = (e) => {
@@ -83,7 +84,7 @@ const NewPost = ({uid}) => {
 
     return(
         <div>
-            <div className="container subcont">
+            <div className="container npsubcont">
                 <form onSubmit={addPost}>
                 <div className="row">
                 <div className="col-md-1">
@@ -95,10 +96,10 @@ const NewPost = ({uid}) => {
                 </div>
                 <hr></hr>
                 <div className="row boxtext justify-content-between" style={{marginRight: "25px",paddingBottom: "10px"}}>
-                  <div onClick={handlebuttonclick}><i style={{marginRight: "8px"}} className="fa fa-image" aria-hidden="true"></i>Image</div>
-                  <div><i style={{marginRight: "8px"}} className="fa fa-video" aria-hidden="true"></i>Clip</div>
-                  <div><i style={{marginRight: "8px"}} className="fa fa-paperclip" aria-hidden="true"></i>Attachment</div>
-                  <div><i style={{marginRight: "8px"}} className="fa fa-microphone" aria-hidden="true"></i>Audio</div>
+                  <button className="newpostbtn hand-hover" onClick={handlebuttonclick}><i style={{marginRight: "8px"}} className="fa fa-image" aria-hidden="true"></i>Image</button>
+                  <button className="newpostbtn hand-hover" onClick={handlebuttonclick}><i style={{marginRight: "8px"}} className="fa fa-video" aria-hidden="true"></i>Clip</button>
+                  <button className="newpostbtn hand-hover" onClick={handlebuttonclick}><i style={{marginRight: "8px"}} className="fa fa-paperclip" aria-hidden="true"></i>Attachment</button>
+                  <button className="newpostbtn hand-hover" onClick={handlebuttonclick}><i style={{marginRight: "8px"}} className="fa fa-microphone" aria-hidden="true"></i>Audio</button>
                 </div>
                 {showImageUpload && (<div>
                 <><input

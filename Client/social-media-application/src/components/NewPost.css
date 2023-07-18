@@ -1,10 +1,25 @@
 
-.subcont{
+.npsubcont{
     background-color: white;
     margin-top: 30px;
-    border-radius: 1.5%;
+    border-radius: 10px;
 }
 
 .boxtext{
     margin-left: 25px;
+}
+
+.hand-hover:hover {
+    cursor: pointer;
+}
+
+.newpostbtn{
+    background-color: white;
+    border: none;
+}
+
+.newpostbtn:active,
+.newpostbtn:focus {
+  outline: none;
+  border: none;
 }

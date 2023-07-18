@@ -1,7 +1,7 @@
 .subcont{
     background-color: white;
     margin-top: 30px;
-    border-radius: 1.5%;
+    border-radius: 5px;
 }
 
 .imgsty{
@@ -10,6 +10,13 @@
     object-fit: cover;
     border-radius: 50%;
     margin-top: 20px;
+}
+
+.icosty{
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .boxtext{
