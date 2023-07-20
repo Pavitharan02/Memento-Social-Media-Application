@@ -55,8 +55,8 @@ const Home = () => {
             <div className="col-md-9" style={{paddingTop: "15px"}}><input placeholder="Search..."></input></div>
             <div className="col-md-1">
                 <div className="d-flex justify-content-end">
-                <div><i className="fa fa-bell" aria-hidden="true"></i></div>
-                <div><i style={{marginLeft: "10px"}} className="fa fa-question-circle" aria-hidden="true"></i></div>
+                <div><i className="fa fa-bell hand-hover" aria-hidden="true"></i></div>
+                <div><i style={{marginLeft: "10px"}} className="fa fa-question-circle hand-hover" aria-hidden="true"></i></div>
                 </div>
             </div>
           </div>
@@ -66,11 +66,14 @@ const Home = () => {
               <div><Profile user={user}/></div>
               <div className="container homesubcont">
                 <b style={{fontSize: "17px"}}>Friends List</b>
+                <hr></hr>
+                <div style={{marginTop: "5px"}}>
                 {friends.map((friend) => (
                   <div key={friend.fid}>
                     <div>{friend.friends.firstName+" "+friend.friends.lastName}</div>
                   </div>
                 ))}
+                </div>
               </div>
             </div>
             <div className="col-md-6">

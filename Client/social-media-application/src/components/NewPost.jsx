@@ -54,7 +54,7 @@ const NewPost = ({uid}) => {
 
       console.log(jsonObject);
   
-      fetch('http://localhost:8080/post/addpost', {
+      fetch('http://localhost:8080/post/add-post', {
         method: "POST",
         body: JSON.stringify(jsonObject),
         headers: {

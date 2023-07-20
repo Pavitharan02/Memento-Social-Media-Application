@@ -22,4 +22,9 @@ public class PostService {
     public Post addPost(Post post) {
         return postRepository.save(post);
     }
+
+    public Post getPostById(Long pid){
+        Post post = postRepository.findById(pid).orElse(null);
+        return post;
+    }
 }

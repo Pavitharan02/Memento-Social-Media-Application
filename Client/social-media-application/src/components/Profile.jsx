@@ -13,7 +13,7 @@ const Profile = ({user}) => {
                 <div style={{marginTop: "20px"}}><b>{user.firstName+" "+user.lastName}</b></div>
                 <div>0 friends</div>
                 </div>
-                <div className="col-md-2" style={{marginTop: "50px"}}><i className="fa fa-cog" aria-hidden="true"></i></div>
+                <div className="col-md-2" style={{marginTop: "50px"}}><i className="fa fa-cog hand-hover" aria-hidden="true"></i></div>
                 </div>
                 <hr></hr>
                 <div className="row">
@@ -32,14 +32,14 @@ const Profile = ({user}) => {
                   <div className="col-md-9">
                   <div className="row boxtext">Twitter</div><div className="row boxtext">Social Network</div>
                   </div>
-                  <div className="col-2"><i className="fa fa-pen" aria-hidden="true"></i></div>
+                  <div className="col-2"><i className="fa fa-pen hand-hover" aria-hidden="true"></i></div>
                 </div>
                 <div className="row">
                   <div className="col-md-1"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png" className="icosty" alt="linkedin"></img></div>
                   <div className="col-md-9">
                   <div className="row boxtext">LinkedIn</div><div className="row boxtext">Social Network</div>
                   </div>
-                  <div className="col-2"><i className="fa fa-pen" aria-hidden="true"></i></div>
+                  <div className="col-2"><i className="fa fa-pen hand-hover" aria-hidden="true"></i></div>
                 </div>
               </div>
     );

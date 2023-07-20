@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './Posts.css'
+import './Posts.css';
 
 const Posts = ({user,posts}) => {
     const [commentVisibility, setCommentVisibility] = useState([]);
@@ -9,6 +9,37 @@ const Posts = ({user,posts}) => {
 
     const handleComment = (e) => {
       setComment(e.target.value);
+    }
+
+    const addComment = async(pid) => {
+      const formData = new FormData();
+      formData.append('text', comment);
+      formData.append('pid', pid);
+      formData.append('uid', user.uid);
+
+      const jsonObject = {};
+      formData.forEach((value, key) => {
+        jsonObject[key] = value;
+      });
+
+      console.log(jsonObject);
+  
+      fetch('http://localhost:8080/comment/addComment', {
+        method: "POST",
+        body: JSON.stringify(jsonObject),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Response from backend:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+
+        window.location.reload();
     }
 
     const addFriend = async() => {
@@ -102,22 +133,26 @@ const Posts = ({user,posts}) => {
                         <div className="col-md-1">
                           <img src={user.picturePath} alt="profile_img" className="icosty"/>
                         </div>
-                        <div className="col-md-11">
+                        <div className="col-md-10">
                           <input className="newcomment" type="text" name="comment" value={comment} placeholder="Write a comment..." onChange={handleComment}></input>
+                        </div>
+                        <div className="col-md-1">
+                          <i className="fa fa-paper-plane hand-hover" style={{color: "#12449b"}} aria-hidden="true" onClick={() => addComment(item.pid)}></i>
                         </div>
                         </div>
                         <hr></hr>
-                        {postComments[item.pid] && postComments[item.pid][0] && (
-                        <div className="container">
-                        <div className="row commentsty">
-                        <div className="col-md-1">
-                          <img src={postComments[item.pid][0].user.picturePath} alt="profile_img" className="icosty"/>
-                        </div>
-                        <div className="col-md-11">
-                          {postComments[item.pid][0].text}
-                        </div>
-                        </div>
-                        </div>)}
+                        {postComments[item.pid] && postComments[item.pid].map(comment => (
+                          <div className="container" key={comment.id} style={{marginBottom: "10px"}}>
+                            <div className="row commentsty">
+                              <div className="col-md-1">
+                                <img src={comment.user.picturePath} alt="profile_img" className="icosty"/>
+                              </div>
+                              <div className="col-md-11">
+                                {comment.text}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                       </div>
                       )}

@@ -8,6 +8,8 @@
     background-color: white;
     margin-top: 30px;
     border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .imgsty{
@@ -20,4 +22,8 @@
 
 .boxtext{
     margin-left: 25px;
+}
+
+.hand-hover:hover {
+    cursor: pointer;
 }
