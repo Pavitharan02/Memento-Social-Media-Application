@@ -13,12 +13,26 @@ const Home = () => {
     const uid = 1;
 
     useEffect(() => {
+      const jwt = localStorage.getItem("jwt");
+      console.log(`Bearer ${jwt}`);
+
         const fetchUser = async () => {
           try {
-            const response = await fetch(`http://localhost:8080/user/${uid}`);
-            const data = await response.json();
-            const fetchedUser = data;
-            setUser(fetchedUser);
+            const response = await fetch(`http://localhost:8080/user/${uid}`, {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+              "Content-Type": "application/json", // Set the appropriate content type if needed
+            },
+          });
+
+          if (!response.ok) {
+            // Handle the case when the response status is not in the 200-299 range
+            throw new Error("Failed to fetch user data");
+          }
+
+          const data = await response.json();
+          const fetchedUser = data;
+          setUser(fetchedUser);
           } catch (error) {
             console.error("Error fetching user:", error);
           }
