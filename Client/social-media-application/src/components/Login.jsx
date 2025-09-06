@@ -4,26 +4,32 @@ import './Login.css';
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = () => {
-    const [email, setEmail] = useState("");
+const Login = () => {    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loggedIn,setLoggedIn] = useState(false);
+    const [isRegisterMode, setIsRegisterMode] = useState(false);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     
     const handleSubmit = async(e) => {
       e.preventDefault();
       
       try {
-        const response = await axios.post("http://localhost:8080/api/v1/auth/authenticate", {
-          email,
-          password,
-        });
+        const endpoint = isRegisterMode ? "register" : "authenticate";
+        const requestBody = isRegisterMode 
+          ? { firstname: firstName, lastname: lastName, email, password, role: "USER" }
+          : { email, password };
+          
+        const response = await axios.post(`http://localhost:8080/api/v1/auth/${endpoint}`, requestBody);
         const jwt = response.data.token;
+        const userId = response.data.userId;
         localStorage.setItem("jwt", jwt);
+        localStorage.setItem("userId", userId);
         setLoggedIn(true);
       } catch (error) {
-        console.error("Login failed:", error);
+        console.error(`${isRegisterMode ? "Registration" : "Login"} failed:`, error);
       }
-      };
+    };
 
     if(loggedIn){
       return <Navigate to="/home"/>
@@ -42,36 +48,60 @@ const Login = () => {
                 <div className="col-md-9 col-lg-6 col-xl-5">
                   <img src="https://i.ibb.co/n8ZP2h8/LOGO.png" className="img-fluid" alt="This is logo"/>
                 </div>
-                <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style={{marginTop: "80px"}}>
-                  <form onSubmit={handleSubmit}>
+                <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1" style={{marginTop: "80px"}}>                  <form onSubmit={handleSubmit}>
                     <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+                      <h4>{isRegisterMode ? "Register" : "Login"}</h4>
                     </div>
+                    
+                    {isRegisterMode && (
+                      <>
+                        <div className="form-outline mb-4">
+                          <label className="form-label" htmlFor="firstName">First Name</label>
+                          <input type="text" id="firstName" className="form-control form-control-lg"
+                            placeholder="Enter first name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required/>
+                        </div>
+                        <div className="form-outline mb-4">
+                          <label className="form-label" htmlFor="lastName">Last Name</label>
+                          <input type="text" id="lastName" className="form-control form-control-lg"
+                            placeholder="Enter last name" value={lastName} onChange={(e) => setLastName(e.target.value)} required/>
+                        </div>
+                      </>
+                    )}
+                    
                     <div className="form-outline mb-4">
                       <label className="form-label" htmlFor="form3Example3">Email address</label>
                       <input type="email" id="form3Example3" className="form-control form-control-lg"
-                        placeholder="Enter a valid email address" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        placeholder="Enter a valid email address" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                     </div>
           
                     <div className="form-outline mb-3">
                       <label className="form-label" htmlFor="form3Example4">Password</label>
-                      <input type="current-password" id="form3Example4" className="form-control form-control-lg"
-                        placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                      <input type="password" id="form3Example4" className="form-control form-control-lg"
+                        placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
                     </div>
           
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="form-check mb-0">
-                        <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                        <label className="form-check-label" htmlFor="form2Example3">
-                          Remember me
-                        </label>
+                    {!isRegisterMode && (
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div className="form-check mb-0">
+                          <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                          <label className="form-check-label" htmlFor="form2Example3">
+                            Remember me
+                          </label>
+                        </div>
+                        <a href="#!" className="text-body">Forgot password?</a>
                       </div>
-                      <a href="#!" className="text-body">Forgot password?</a>
-                    </div>
+                    )}
           
                     <div className="text-center text-lg-start mt-4 pt-2">
-                    <button type="submit" className="btn btn-success btn-lg" style={buttonStyle}>Login</button>
-                      <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
-                          className="link-danger">Register</a></p>
+                      <button type="submit" className="btn btn-success btn-lg" style={buttonStyle}>
+                        {isRegisterMode ? "Register" : "Login"}
+                      </button>
+                      <p className="small fw-bold mt-2 pt-1 mb-0">
+                        {isRegisterMode ? "Already have an account? " : "Don't have an account? "}
+                        <a href="#!" className="link-danger" onClick={(e) => {e.preventDefault(); setIsRegisterMode(!isRegisterMode);}}>
+                          {isRegisterMode ? "Login" : "Register"}
+                        </a>
+                      </p>
                     </div>
           
                   </form>

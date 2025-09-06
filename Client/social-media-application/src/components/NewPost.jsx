@@ -18,6 +18,7 @@ const NewPost = ({uid}) => {
   
 
     const handleImage = async (e) => {
+      const jwt = localStorage.getItem("jwt");
       const file = e.target.files[0];
       const formData = new FormData();
       formData.append('image', file);
@@ -25,6 +26,9 @@ const NewPost = ({uid}) => {
       const response = await fetch('http://localhost:8080/upload/to', {
         method: 'POST',
         body: formData,
+        headers: {
+          "Authorization": `Bearer ${jwt}`,
+        },
       });
     
       if (response.ok) {
@@ -37,13 +41,13 @@ const NewPost = ({uid}) => {
         console.log('File upload failed');
       }
     };
-    
-
-    const addPost = (event) => {
+        const addPost = (event) => {
+      const jwt = localStorage.getItem("jwt");
+      const userId = localStorage.getItem("userId");
       
       const formData = new FormData(); // Create a new FormData object
   
-      formData.append('userid', uid);
+      formData.append('userid', userId);
       formData.append('description', desc);
       formData.append('picturePath', imgUrl);
 
@@ -59,6 +63,7 @@ const NewPost = ({uid}) => {
         body: JSON.stringify(jsonObject),
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${jwt}`,
         },
       })
         .then((response) => response.json())

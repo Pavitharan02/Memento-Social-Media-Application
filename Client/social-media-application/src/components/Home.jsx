@@ -6,14 +6,21 @@ import Profile from "./Profile";
 
 const Home = () => {
     // const [loggedIn, setLoggedIn] = useState(false);
-
     const [user, setUser] = useState("");
     const [friends, setFriends] = useState([]);
     const [posts, setPosts] = useState("");
-    const uid = 1;
+    const uid = localStorage.getItem("userId");
 
     useEffect(() => {
       const jwt = localStorage.getItem("jwt");
+      const userId = localStorage.getItem("userId");
+      
+      // Redirect to login if no authentication data
+      if (!jwt || !userId) {
+        window.location.href = "/";
+        return;
+      }
+      
       console.log(`Bearer ${jwt}`);
 
         const fetchUser = async () => {
@@ -40,7 +47,12 @@ const Home = () => {
         fetchUser();
         const fetchFriends = async () => {
           try {
-            const response = await fetch(`http://localhost:8080/friends/${uid}`);
+            const response = await fetch(`http://localhost:8080/friends/${uid}`, {
+              headers: {
+                Authorization: `Bearer ${jwt}`,
+                "Content-Type": "application/json",
+              },
+            });
             const data = await response.json();
             const fetchedFriends = data;
             setFriends(fetchedFriends);
@@ -51,19 +63,39 @@ const Home = () => {
         fetchFriends();
         const fetchPosts = async () => {
           try {
-            const response = await fetch(`http://localhost:8080/post`);
+            const response = await fetch(`http://localhost:8080/post`, {
+              headers: {
+                Authorization: `Bearer ${jwt}`,
+                "Content-Type": "application/json",
+              },
+            });
             const data = await response.json();
             const fetchedPosts = data;
-            setPosts(fetchedPosts);
-          } catch (error) {
+            setPosts(fetchedPosts);          } catch (error) {
             console.error("Error fetching Posts:", error);
           }
         };
         fetchPosts();
       }, [uid]);
+
+    const handleLogout = () => {
+        localStorage.removeItem("jwt");
+        localStorage.removeItem("userId");
+        window.location.href = "/";
+    };
   
     return (
         <div className="container-fluid">
+          <div className="row">
+            <div className="col-md-12" style={{padding: "20px", borderBottom: "1px solid #ddd"}}>
+              <div className="d-flex justify-content-between align-items-center">
+                <h2>Social Media App</h2>
+                <button className="btn btn-outline-danger" onClick={handleLogout}>
+                  <i className="fa fa-sign-out" aria-hidden="true"></i> Logout
+                </button>
+              </div>
+            </div>
+          </div>
           <div className="row">
             <div className="col-md-2 title"><img src="https://i.ibb.co/d5ZRfCh/MEMENTO-LOGO.png" className="img-fluid" alt="This is logo" style={{marginBottom: "10px"}}/></div>
             <div className="col-md-9" style={{paddingTop: "15px"}}><input placeholder="Search..."></input></div>
