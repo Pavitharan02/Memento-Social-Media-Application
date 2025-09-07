@@ -182,8 +182,8 @@ const Posts = ({user,posts}) => {
                                     <img src={item.user.picturePath} alt="profile_img" className="imgsty" />
                                 </div>
                                 <div className="col-md-9">
-                                    <div className="boxtext" style={{ marginTop: "20px" }}>{item.user.firstName} {item.user.lastName}</div>
-                                    <div className="boxtext">{item.user.location}</div>
+                                    <div className="boxtext" style={{ marginTop: "20px" }}><b>{item.user.firstName} {item.user.lastName}</b></div>
+                                    <div className="boxtext"><i>{item.user.location}</i></div>
                                 </div>
                                 <div className="col-md-2">
                                     <div className="hand-hover">

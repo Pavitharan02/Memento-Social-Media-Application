@@ -2,7 +2,7 @@ import React from "react";
 import './NewPost.css';
 import {useState} from "react";
 
-const NewPost = ({uid}) => {
+const NewPost = ({user}) => {
     const [imgUrl, setImgurl] = useState("");
     const [showImageUpload, setShowImageUpload] = useState(false);
     const [desc,setDesc] = useState("");
@@ -93,7 +93,7 @@ const NewPost = ({uid}) => {
                 <form onSubmit={addPost}>
                 <div className="row">
                 <div className="col-md-1">
-                <img src="https://pyxis.nymag.com/v1/imgs/bca/465/a386aa2ea7d13400dd69b6237ad1407f53-01-tom-cruise.rhorizontal.w700.jpg" alt="profile_img" className="imgsty" />
+                <img src={user.picturePath} alt="profile_img" className="imgsty" />
                 </div>
                 <div className="col-md-11">
                 <input type="text" name="description" value={desc} placeholder="What's on your mind..." onChange={handleChange} style={{marginTop: "25px",width: "100%",height: "50px"}}></input>

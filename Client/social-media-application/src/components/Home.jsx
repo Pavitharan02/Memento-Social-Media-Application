@@ -114,7 +114,7 @@ const Home = () => {
               </div>
             </div>
             <div className="col-md-6">
-              <NewPost uid={uid}/>
+              <NewPost user={user}/>
               <Posts user={user} posts={posts}/>
               </div>
                 

@@ -7,7 +7,7 @@ const Profile = ({user}) => {
         <div className="container subcont">
                 <div className="row">
                 <div className="col-md-2">
-                <img src="https://pyxis.nymag.com/v1/imgs/bca/465/a386aa2ea7d13400dd69b6237ad1407f53-01-tom-cruise.rhorizontal.w700.jpg" alt="profile_img" className="imgsty"/>
+                <img src={user.picturePath} alt="profile_img" className="imgsty"/>
                 </div>
                 <div className="col-md-8">
                 <div style={{marginTop: "20px"}}><b>{user.firstName+" "+user.lastName}</b></div>
@@ -17,8 +17,15 @@ const Profile = ({user}) => {
                 </div>
                 <hr></hr>
                 <div className="row">
-                  <div className="boxtext"><i style={{marginLeft: "10px"}} className="fa fa-map-marker" aria-hidden="true"><span className="boxtext">{user.location}</span></i><br></br>
-                  <i style={{marginLeft: "10px"}} className="fa fa-suitcase" aria-hidden="true"><span className="boxtext">{user.occupation}</span></i>
+                  <div className="boxtext d-flex flex-column align-items-start">
+                    <div>
+                      <i style={{marginLeft: "12px"}} className="fa fa-map-marker" aria-hidden="true"></i>
+                      <span className="boxtext" style={{marginLeft: "10px"}}>{user.location}</span>
+                    </div>
+                    <div style={{marginTop: "5px"}}>
+                      <i style={{marginLeft: "10px"}} className="fa fa-suitcase" aria-hidden="true"></i>
+                      <span className="boxtext" style={{marginLeft: "8px"}}>{user.occupation}</span>
+                    </div>
                   </div>
                 </div>
                 <hr></hr>
