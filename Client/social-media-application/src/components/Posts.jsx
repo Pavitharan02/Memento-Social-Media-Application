@@ -199,7 +199,7 @@ const Posts = ({user,posts}) => {
                             <div className="row">
                                 <div className="boxtext col">
                                     <div>{item.description}</div>
-                                    <img style={{ width: "100%", marginTop: "10px" }} src={window.location.origin + item.picturePath} alt="post_img" className="postimg" />
+                                    <img style={{ width: "100%", marginTop: "10px" }} src={`http://localhost:8080${item.picturePath}`} alt="post_img" className="postimg" />
                                 </div>
                             </div>
                             <hr></hr>

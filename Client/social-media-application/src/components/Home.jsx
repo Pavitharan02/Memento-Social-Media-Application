@@ -84,25 +84,16 @@ const Home = () => {
         window.location.href = "/";
     };
   
-    return (
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-12" style={{padding: "20px", borderBottom: "1px solid #ddd"}}>
-              <div className="d-flex justify-content-between align-items-center">
-                <h2>Social Media App</h2>
-                <button className="btn btn-outline-danger" onClick={handleLogout}>
-                  <i className="fa fa-sign-out" aria-hidden="true"></i> Logout
-                </button>
-              </div>
-            </div>
-          </div>
+    return (        <div className="container-fluid">
           <div className="row">
             <div className="col-md-2 title"><img src="https://i.ibb.co/d5ZRfCh/MEMENTO-LOGO.png" className="img-fluid" alt="This is logo" style={{marginBottom: "10px"}}/></div>
-            <div className="col-md-9" style={{paddingTop: "15px"}}><input placeholder="Search..."></input></div>
-            <div className="col-md-1">
-                <div className="d-flex justify-content-end">
+            <div className="col-md-8" style={{paddingTop: "15px"}}><input placeholder="Search..."></input></div>            <div className="col-md-2">
+                <div className="d-flex justify-content-end align-items-center" style={{height: "100%", paddingTop: "15px"}}>
                 <div><i className="fa fa-bell hand-hover" aria-hidden="true"></i></div>
-                <div><i style={{marginLeft: "10px"}} className="fa fa-question-circle hand-hover" aria-hidden="true"></i></div>
+                <div><i style={{marginLeft: "15px"}} className="fa fa-question-circle hand-hover" aria-hidden="true"></i></div>
+                <button className="btn btn-outline-danger btn-sm" onClick={handleLogout} style={{marginLeft: "15px"}}>
+                  <i className="fa fa-sign-out" aria-hidden="true"></i> Logout
+                </button>
                 </div>
             </div>
           </div>
