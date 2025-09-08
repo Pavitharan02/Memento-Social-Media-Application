@@ -24,4 +24,8 @@ public class FriendsService {
     public Friends addFriend(Friends friend) {
         return friendsRepository.save(friend);
     }
+
+    public void deleteFriend(Long fid) {
+        friendsRepository.deleteById(fid);
+    }
 }

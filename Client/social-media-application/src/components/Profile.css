@@ -22,3 +22,50 @@
 .boxtext{
     margin-left: 25px;
 }
+
+.user-profile-add-friend {
+  text-align: center;
+  margin: 20px;
+}
+.user-profile-add-friend .btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 8px 24px;
+  font-size: 1.1rem;
+  border-radius: 20px;
+  transition: background 0.2s, color 0.2s;
+}
+.user-profile-add-friend .btn-primary:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+.user-profile-page {
+  background: linear-gradient(135deg, #f8fafc 0%, #e3e9f7 100%);
+  min-height: 100vh;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.user-profile-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px 32px 16px 32px;
+}
+.user-profile-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.user-profile-header h2 {
+  font-weight: 700;
+  color: #2d3a4a;
+  margin-bottom: 0;
+}
+.user-profile-header p {
+  color: #6c757d;
+  margin-top: 4px;
+  font-size: 1.1rem;
+}

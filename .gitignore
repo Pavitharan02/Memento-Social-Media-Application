@@ -1,0 +1,70 @@
+# Node
+node_modules/
+.env
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+build/
+dist/
+
+# VSCode
+.vscode/
+
+# Mac
+*.DS_Store
+
+# Windows
+Thumbs.db
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+/target/
+
+# Maven
+.mvn/
+
+# Logs
+*.log
+
+# IntelliJ
+.idea/
+*.iml
+
+# OS
+*.swp
+
+# Misc
+*.bak
+*.tmp
+
+# Ignore local environment files
+*.local
+
+# Ignore coverage
+coverage/
+
+# Ignore test output
+/test-output/
+
+/generated/
+
+# Ignore images in React public folder
+Client/social-media-application/public/*.png
+Client/social-media-application/public/*.jpg
+Client/social-media-application/public/*.jpeg
+Client/social-media-application/public/*.gif
+Client/social-media-application/public/*.webp
+Client/social-media-application/public/*.svg
+# But keep favicon and logo files
+!Client/social-media-application/public/favicon.ico
+!Client/social-media-application/public/logo192.png
+!Client/social-media-application/public/logo512.png
+!Client/social-media-application/public/index.html
+!Client/social-media-application/public/manifest.json
+!Client/social-media-application/public/robots.txt

@@ -5,6 +5,8 @@ import com.personal.social_media_application.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 @CrossOrigin(allowedHeaders = "*" ,origins = "*")
@@ -20,5 +22,10 @@ public class UserController {
     public User getUserByID(@PathVariable Long uid){
         User user = userService.getUserByID(uid);
         return user;
+    }
+
+    @GetMapping("/search")
+    public List<User> searchUsers(@RequestParam("query") String query) {
+        return userService.searchUsers(query);
     }
 }

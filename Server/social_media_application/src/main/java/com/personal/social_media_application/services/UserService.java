@@ -18,4 +18,8 @@ public class UserService {
         User user = userRepository.findById(uid).orElse(null);
         return user;
     }
+
+    public java.util.List<User> searchUsers(String query) {
+        return userRepository.searchUsers(query);
+    }
 }

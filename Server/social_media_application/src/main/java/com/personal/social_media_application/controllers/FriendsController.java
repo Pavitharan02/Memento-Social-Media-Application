@@ -25,6 +25,8 @@ public class FriendsController {
     @GetMapping("/{uid}")
     public List<Friends> getFriendsByID(@PathVariable Long uid){
         List<Friends> friends = friendsService.getFriendsByUID(uid);
+        // Filter out self from friends list
+        friends.removeIf(f -> f.getFriends() != null && f.getFriends().getUid().equals(uid));
         return friends;
     }
 
@@ -32,5 +34,11 @@ public class FriendsController {
     public ResponseEntity<Friends> addFriend(@RequestBody Friends friend){
         Friends newFriend = friendsService.addFriend(friend);
         return ResponseEntity.status(HttpStatus.CREATED).body(newFriend);
+    }
+
+    @DeleteMapping("/{fid}")
+    public ResponseEntity<Void> deleteFriend(@PathVariable Long fid) {
+        friendsService.deleteFriend(fid);
+        return ResponseEntity.noContent().build();
     }
 }
